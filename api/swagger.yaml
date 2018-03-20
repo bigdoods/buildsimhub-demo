@@ -1,0 +1,302 @@
+swagger: '2.0'
+info:
+  description: This is the document for BuildSimHub cloud API.
+  version: 1.0.0
+  title: BuildSimHub Cloud API
+  termsOfService: >-
+    https://app.termly.io/document/terms-of-use-for-saas/5d663de5-6319-4b6e-970d-dda4de792ea5
+  contact:
+    email: weili.xu@buildsimhub.net
+  license:
+    name: MIT
+    url: 'https://github.com/weilix88/buildsimhub_python_api/blob/master/LICENSE.txt'
+host: develop.buildsimhub.net
+schemes:
+  - https
+paths:
+  /RunSimulationCustomize_API:
+    post:
+      summary: simulate an energy model (IDF format) on cloud
+      description: >-
+        This API allows user to upload an EnergyPlus model and run the model or
+        not.
+      operationId: runSimulationCustomize_APIPOST
+      consumes:
+        - multipart/form-data
+      parameters:
+        - name: user_api_key
+          in: query
+          description: The user api key for accessing the service
+          required: true
+          type: string
+        - name: unit
+          in: query
+          description: 'unit system, can be either "ip" or "si", "ip" is defaut'
+          required: false
+          type: string
+          enum:
+            - ip
+            - si
+        - name: agents
+          in: query
+          description: 'simulation agents, 1,2 or 4'
+          required: false
+          type: integer
+          enum:
+            - 1
+            - 2
+            - 3
+        - name: model
+          in: formData
+          description: 'Energy model (.idf, gbxml, .osm)'
+          required: true
+          type: file
+        - name: weather_file
+          in: formData
+          description: Weather file (.epw)
+          required: true
+          type: file
+      responses:
+        '200':
+          description: message describing simulation
+          schema:
+            $ref: '#/definitions/inline_response_200'
+      x-swagger-router-controller: Default
+  /TrackSimulation_API:
+    get:
+      summary: get a simulation status
+      description: >-
+        This API request allows user to receive the simulation status of a
+        specific model
+      operationId: trackSimulation_APIGET
+      parameters:
+        - name: user_api_key
+          in: query
+          description: The user api key for accessing the service
+          required: true
+          type: string
+        - name: track_token
+          in: query
+          description: >-
+            The tracking token to access a model (either this or the
+            folder_api_key has to be filled)
+          required: true
+          type: string
+      responses:
+        '200':
+          description: successfully received the request
+          schema:
+            $ref: '#/definitions/inline_response_200_1'
+      x-swagger-router-controller: Default
+  /GetBuildingBasicInfo_API:
+    get:
+      summary: get a model information
+      description: API request to retrieve model information
+      operationId: getBuildingBasicInfo_APIGET
+      parameters:
+        - name: user_api_key
+          in: query
+          description: The user api key for accessing the service
+          required: true
+          type: string
+        - name: folder_api_key
+          in: query
+          description: >-
+            The folder where the model located (either this or the track_token
+            has to be filled)
+          required: false
+          type: string
+        - name: track_token
+          in: query
+          description: >-
+            The tracking token to access a model (either this or the
+            folder_api_key has to be filled)
+          required: false
+          type: string
+        - name: request_data
+          in: query
+          description: required data information
+          required: true
+          type: string
+          enum:
+            - BuildingStories
+            - ConditionedZoneNumber
+            - ZoneFloorArea
+            - ConditionedZoneFloorArea
+            - TotalWindowWallRatio
+            - TotalZoneNumber
+            - Orientation
+      responses:
+        '200':
+          description: successfully received the request
+          schema:
+            $ref: '#/definitions/inline_response_200_2'
+      x-swagger-router-controller: Default
+  /GetBuildingSimulationResults_API:
+    get:
+      summary: get simulation results information
+      description: API request to retrieve model simulation results
+      operationId: getBuildingSimulationResults_APIGET
+      parameters:
+        - name: user_api_key
+          in: query
+          description: The user api key for accessing the service
+          required: true
+          type: string
+        - name: folder_api_key
+          in: query
+          description: >-
+            The folder where the model located (either this or the track_token
+            has to be filled)
+          required: false
+          type: string
+        - name: track_token
+          in: query
+          description: >-
+            The tracking token to access a model (either this or the
+            folder_api_key has to be filled)
+          required: false
+          type: string
+        - name: request_data
+          in: query
+          description: required data information
+          required: true
+          type: string
+          enum:
+            - CoolingElectricity
+            - CoolingNaturalGas
+            - DomesticHotWaterElectricity
+            - DomesticHotWaterNaturalGas
+            - ExteriorEquipmentElectricity
+            - ExteriorEquipmentNaturalGas
+            - ExteriorLightingElectricity
+            - ExteriorLightingNaturalGas
+            - FansElectricity
+            - FansNaturalGas
+            - HeatingElectricity
+            - HeatingNaturalGas
+            - HeatRejectionElectricity
+            - HeatRejectionNaturalGas
+            - InteiorEquipmentElectricity
+            - InteriorEquipmentNaturalGas
+            - InteriorLightingElectricity
+            - InteriorLightingNaturalGas
+            - PumpsElectricity
+            - PumpsNaturalGas
+            - NetSiteEUI
+            - NotMetHoursCooling
+            - NotMetHoursHeating
+            - TotalEndUseElectricity
+            - TotalEndUseNaturalGas
+            - TotalSiteEUI
+      responses:
+        '200':
+          description: successfully received the request
+          schema:
+            $ref: '#/definitions/inline_response_200_2'
+      x-swagger-router-controller: Default
+  /GetZoneLoadInfo_API:
+    get:
+      summary: retrieve a model's zone load information
+      description: >-
+        This API retrieves a list of zone load information including zone peak
+        cooling and heating loads, time of the peak and load densities, if a
+        zone name is given, then this API will retrieve the detail load
+        component inside this zone
+      operationId: getZoneLoadInfo_APIGET
+      parameters:
+        - name: user_api_key
+          in: query
+          description: The user api key for accessing the service
+          required: true
+          type: string
+        - name: folder_api_key
+          in: query
+          description: >-
+            The folder where the model located (either this or the track_token
+            has to be filled)
+          required: false
+          type: string
+        - name: track_token
+          in: query
+          description: >-
+            The tracking token to access a model (either this or the
+            folder_api_key has to be filled)
+          required: false
+          type: string
+        - name: zone_name
+          in: query
+          description: >-
+            If this parameter is given, then the API will try to retrieve the
+            detail load component of a zone from the simulation results
+          required: false
+          type: string
+      responses:
+        '200':
+          description: successfully received the request
+          schema:
+            $ref: '#/definitions/inline_response_200_2'
+      x-swagger-router-controller: Default
+definitions:
+  inline_response_200_1:
+    properties:
+      status:
+        type: string
+        description: error or success
+      error_msg:
+        type: string
+        description: possible error message
+      has_more:
+        type: boolean
+        description: indicate whether the simulation is completed or not
+      doing:
+        type: string
+        description: indicates the simulation progress
+      percent:
+        type: integer
+        description: the percentage of the simulation that is completed
+      is_queued:
+        type: boolean
+        description: indicate whether this simulation is queued
+      queue_position:
+        type: integer
+        description: indicates the position of this simulation in the queue
+    example:
+      doing: doing
+      queue_position: 6
+      error_msg: error_msg
+      is_queued: true
+      has_more: true
+      percent: 0
+      status: status
+  inline_response_200:
+    properties:
+      status:
+        type: string
+        description: error or success
+      error_msg:
+        type: string
+        description: possible error message
+      tracking:
+        type: string
+        description: the simulaton job key to access simulation status and results
+    example:
+      error_msg: error_msg
+      tracking: tracking
+      status: status
+  inline_response_200_2:
+    properties:
+      status:
+        type: string
+        description: error or success
+      error_msg:
+        type: string
+        description: possible error message
+      data:
+        type: object
+        description: data contains in either string or object format
+        properties: {}
+    example:
+      error_msg: error_msg
+      data: '{}'
+      status: status
