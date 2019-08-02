@@ -21,3 +21,12 @@ Open your favourite browser, then open node-red flow:
 ```
 $ localhost:8000
 ```
+
+### Developers
+
+```
+git clone https://github.com/bimlauncher/bimlauncher-buildsimhub-demo.git
+cd bimlauncher-buildsimhub-demo
+npm install
+npm start
+```

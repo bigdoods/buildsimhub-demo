@@ -1,0 +1,1667 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0",
+    "title": "RECAP",
+    "description": "TODO: Add Description"
+  },
+  "host": "developer.api.autodesk.com",
+  "basePath": "/",
+  "securityDefinitions": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "implicit",
+      "authorizationUrl": "https://developer.api.autodesk.com",
+      "scopes": {},
+      "x-skip-client-authentication": false
+    }
+  },
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/photo-to-3d/v1/photoscene": {
+      "post": {
+        "description": "Creates a scene with givven settings.\nRequires an data:write token.",
+        "summary": "Create_scene",
+        "tags": [
+          "ReCap"
+        ],
+        "operationId": "PhotoTo3dV1PhotoscenePost",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "scenename",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "callback",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "format",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "scenetype",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": "can be object or aerial"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "POST",
+              "uri": "/photo-to-3d/v1/photoscene",
+              "headers": {
+                "Content-Type": "application/x-www-form-urlencoded"
+              },
+              "body": "scenename=some_scene_name&callback=http://example.com&format=rcm&scenetype=object"
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "NONE",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {}
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "Create_scene",
+            "x-testDescription": "Creates a scene with givven settings.\nRequires an data:write token."
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/authentication/v1/authenticate": {
+      "post": {
+        "description": "TODO: Add Description",
+        "summary": "2-legged-token",
+        "tags": [
+          "ReCap"
+        ],
+        "operationId": "AuthenticationV1AuthenticatePost",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "client_id",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "client_secret",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "grant_type",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "scope",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "POST",
+              "uri": "/authentication/v1/authenticate",
+              "headers": {
+                "Content-Type": "application/x-www-form-urlencoded"
+              },
+              "body": "client_id={{CLIENT_ID}}&client_secret={{CLIENT_SECRET}}&grant_type=client_credentials&scope=data:write data:read"
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "NONE",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {}
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "2-legged-token",
+            "x-testDescription": "TODO: Add Description"
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/photo-to-3d/v1/photoscene/{RECENT_PHOTOSCENE}": {
+      "get": {
+        "description": "",
+        "summary": "Get_results",
+        "tags": [
+          "ReCap"
+        ],
+        "operationId": "PhotoTo3dV1PhotosceneByRECENTPHOTOSCENEGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "format",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "RECENT_PHOTOSCENE",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/GetResults"
+            },
+            "examples": {
+              "application/json": {
+                "Usage": "1.507159948349",
+                "Resource": "/photoscene/anpzMQBblC3XyGkF9HGDcWt3yz8rPPZvFdq2HWEWzQg",
+                "Photoscene": {
+                  "photosceneid": "anpzMQBblC3XyGkF9HGDcWt3yz8rPPZvFdq2HWEWzQg",
+                  "progressmsg": "DONE",
+                  "progress": "100",
+                  "scenelink": "http://adsk-rc-photofly-prod.s3.amazonaws.com/3.0.0/OUT/1PyEvoLYJ0X2xz4XFPPf01L1yShrlWZUz4ywvwhB4mo%3D-anpzMQBblC3XyGkF9HGDcWt3yz8rPPZvFdq2HWEWzQg/100000000/some_scene_name.obj.zip?response-content-disposition=attachment%3B%20filename%3D3.0.0%2FOUT%2F1PyEvoLYJ0X2xz4XFPPf01L1yShrlWZUz4ywvwhB4mo%3D-anpzMQBblC3XyGkF9HGDcWt3yz8rPPZvFdq2HWEWzQg%2F100000000%2Fsome_scene_name.obj.zip&AWSAccessKeyId=AKIAISSOG3ZDTRIE6NGA&Expires=1518900642&Signature=AlMCAddVIArTqoi3ghhNV22GQ60%3D",
+                  "urn": {},
+                  "filesize": "5837986",
+                  "resultmsg": {}
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ],
+        "x-unitTests": [],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      },
+      "post": {
+        "description": "At least 3 images are necessary to start the processing.",
+        "summary": "Start_photoscene_processing",
+        "tags": [
+          "ReCap"
+        ],
+        "operationId": "PhotoTo3dV1PhotosceneByRECENTPHOTOSCENEPost",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "RECENT_PHOTOSCENE",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/StartPhotosceneProcessingError"
+            },
+            "examples": {
+              "application/json": {
+                "Usage": "2.9841439723969",
+                "Resource": "/photoscene/TLO0N6EdLGLsuwav30Nrzuhd293oVBhPhHuGaKycQfk",
+                "Error": {
+                  "code": "9",
+                  "msg": "At least three images are required to process the Photoscene"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ],
+        "x-unitTests": [],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      },
+      "delete": {
+        "description": "",
+        "summary": "Delete_photoscene",
+        "tags": [
+          "ReCap"
+        ],
+        "operationId": "PhotoTo3dV1PhotosceneByRECENTPHOTOSCENEDelete",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "RECENT_PHOTOSCENE",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/DeletePhotoscene"
+            },
+            "examples": {
+              "application/json": {
+                "Usage": "1.4019570350647",
+                "Resource": "/photoscene/AGOUu3N1mFzXwV01AkFor1x4mZwhBZDKv9wIb1POJwA",
+                "msg": "No error"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ],
+        "x-unitTests": [],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/photo-to-3d/v1/photoscene/{RECENT_PHOTOSCENE}/cancel": {
+      "post": {
+        "description": "",
+        "summary": "Cancel_scene_processing",
+        "tags": [
+          "ReCap"
+        ],
+        "operationId": "PhotoTo3dV1PhotosceneCancelByRECENTPHOTOSCENEPost",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "RECENT_PHOTOSCENE",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/CancelSceneProcessing"
+            },
+            "examples": {
+              "application/json": {
+                "Usage": "1.4022347927094",
+                "Resource": "/photoscene/U0pEmLNYktcEnEFooMuqZMaIUSqCZLePIf0Nfj4EOoQ/cancel",
+                "msg": "No error"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ],
+        "x-unitTests": [],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/photo-to-3d/v1/photoscene/{RECENT_PHOTOSCENE}/progress": {
+      "get": {
+        "description": "TODO: Add Description",
+        "summary": "Check_photoscene_progress",
+        "tags": [
+          "ReCap"
+        ],
+        "operationId": "PhotoTo3dV1PhotosceneProgressByRECENTPHOTOSCENEGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "RECENT_PHOTOSCENE",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/CheckPhotosceneProgress"
+            },
+            "examples": {
+              "application/json": {
+                "Usage": "1.2508330345154",
+                "Resource": "/photoscene/anpzMQBblC3XyGkF9HGDcWt3yz8rPPZvFdq2HWEWzQg/progress",
+                "Photoscene": {
+                  "photosceneid": "anpzMQBblC3XyGkF9HGDcWt3yz8rPPZvFdq2HWEWzQg",
+                  "progressmsg": "Processing",
+                  "progress": "80"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ],
+        "x-unitTests": [],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/photo-to-3d/v1/photoscene/{RECENT_PHOTOSCENE}/properties": {
+      "get": {
+        "description": "List the photoscene details, including the files uploaded and associated with the photoscene.",
+        "summary": "Get_photoscene_details[UNoFFICIAL]",
+        "tags": [
+          "ReCap"
+        ],
+        "operationId": "PhotoTo3dV1PhotoscenePropertiesByRECENTPHOTOSCENEGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "RECENT_PHOTOSCENE",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/GetPhotosceneDetails[unofficial]"
+            },
+            "examples": {
+              "application/json": {
+                "Usage": "1.2874660491943",
+                "Resource": "/photoscene/anpzMQBblC3XyGkF9HGDcWt3yz8rPPZvFdq2HWEWzQg/properties",
+                "next_token": {},
+                "Photoscenes": {
+                  "Photoscene": {
+                    "photosceneid": "anpzMQBblC3XyGkF9HGDcWt3yz8rPPZvFdq2HWEWzQg",
+                    "itemName": "anpzMQBblC3XyGkF9HGDcWt3yz8rPPZvFdq2HWEWzQg",
+                    "clientID": "6NHGyFrutRmejUgL8GS2nd6mayrjYRsn",
+                    "clientStatus": "CREATED",
+                    "type": "all",
+                    "userID": "uSfPxUGJ1xePv2bmz1BC1dL7Z0nhq5ZpwjNUcWPqPhI=",
+                    "convertStatus": "CREATED",
+                    "projectID": "anpzMQBblC3XyGkF9HGDcWt3yz8rPPZvFdq2HWEWzQg",
+                    "engineVersion": "3.0.0.3104",
+                    "convertFormat": "obj",
+                    "userAgent": "PF_APIv3.2.21-Photofly-WebAPI-FORGE",
+                    "creationDate": "2018-02-16T20:13:59",
+                    "name": "some_scene_name",
+                    "callback": "http://example.com",
+                    "maxResolutionForImage": "100000000",
+                    "UseTitanTextureEngine": "1",
+                    "scenetype": "object",
+                    "status": "PROCESSING",
+                    "Files": {
+                      "file": [
+                        {
+                          "@attributes": {
+                            "pos": "002"
+                          },
+                          "key": "CexE/tHB6/vDQS/kAfB/I3hp/DyUV/Faoj/QzLY/pPG8/y7kW/4ug=-2406389-100000000",
+                          "fileid": "CexEtHB6vDQSkAfBI3hpDyUVFaojQzLYpPG8y7kW4ug=-2406389-100000000",
+                          "filename": "DSC_1159.JPG",
+                          "type": "image",
+                          "subtype": {},
+                          "ancestor": {}
+                        },
+                        {
+                          "@attributes": {
+                            "pos": "001"
+                          },
+                          "key": "biyQ/TcFo/B6qv/5Ihi/41py/RXNu/SF1E/CNVU/qB4f/sVw7/FVc=-2359132-100000000",
+                          "fileid": "biyQTcFoB6qv5Ihi41pyRXNuSF1ECNVUqB4fsVw7FVc=-2359132-100000000",
+                          "filename": "DSC_1158.JPG",
+                          "type": "image",
+                          "subtype": {},
+                          "ancestor": {}
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ],
+        "x-unitTests": [],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/photo-to-3d/v1/file": {
+      "post": {
+        "description": "TODO: Add Description",
+        "summary": "Upload file",
+        "tags": [
+          "ReCap"
+        ],
+        "operationId": "PhotoTo3dV1FilePost",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "photosceneid",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "type",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "file[0]",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "file[1]",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "file[2]",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Upload fileVersions"
+            },
+            "examples": {
+              "application/json": {
+                "Usage": "2.4938521385193",
+                "Resource": "/file",
+                "photosceneid": "jQy3aGbo40K16dWnuUcEnqcpmQCSXKcFAiEzuDw1RFU",
+                "Files": {
+                  "file": {
+                    "filename": "DSC_1165.JPG",
+                    "fileid": "LqJc81gbeqk4a91HUksNkP9NKSNOndf4OQnAGQbR26Q=-2537563-100000000",
+                    "filesize": "2537563",
+                    "msg": "No error"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "POST",
+              "uri": "/photo-to-3d/v1/file",
+              "headers": {
+                "Content-Type": "application/x-www-form-urlencoded"
+              },
+              "body": "photosceneid={{RECENT_PHOTOSCENE}}&type=image&file[0]=&file[1]=&file[2]="
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "RAW",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {
+                "Connection": "keep-alive",
+                "Content-Length": "265",
+                "Content-Type": "application/json",
+                "Date": "Tue, 06 Feb 2018 20:25:04 GMT",
+                "Server": "Apache/2.4.6 (CentOS)",
+                "Set-Cookie": "AWSALB=BO0N/JdLN161Pma2lRg0MjwvymdHNIgYUqawx2a5P+55YtbTlxi9ut7Uvu1h9kXA2O81EChqfGCJZRawg5Usqxl5mjSVZln3903CIDvEylB6wynQYqx2P/GsyKnW; Expires=Tue, 13 Feb 2018 20:25:02 GMT; Path=/",
+                "X-Powered-By": "PHP/7.0.24"
+              },
+              "body": "{\"Usage\":\"2.4938521385193\",\"Resource\":\"/file\",\"photosceneid\":\"jQy3aGbo40K16dWnuUcEnqcpmQCSXKcFAiEzuDw1RFU\",\"Files\":{\"file\":{\"filename\":\"DSC_1165.JPG\",\"fileid\":\"LqJc81gbeqk4a91HUksNkP9NKSNOndf4OQnAGQbR26Q=-2537563-100000000\",\"filesize\":\"2537563\",\"msg\":\"No error\"}}}"
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "Upload file",
+            "x-testDescription": "TODO: Add Description"
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/photo-to-3d/v1/photoscene/foruser": {
+      "get": {
+        "description": "List the already created scenes (scenes created by the owner of the given token).",
+        "summary": "Get_available_scenes[UNOFFICIAL]",
+        "tags": [
+          "ReCap"
+        ],
+        "operationId": "PhotoTo3dV1PhotosceneForuserGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/GetAvailableScenes[unofficial]"
+            },
+            "examples": {}
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ],
+        "x-unitTests": [],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Photoscene8": {
+      "title": "Photoscene8",
+      "example": {
+        "photosceneid": "anpzMQBblC3XyGkF9HGDcWt3yz8rPPZvFdq2HWEWzQg",
+        "itemName": "anpzMQBblC3XyGkF9HGDcWt3yz8rPPZvFdq2HWEWzQg",
+        "clientID": "6NHGyFrutRmejUgL8GS2nd6mayrjYRsn",
+        "clientStatus": "CREATED",
+        "type": "all",
+        "userID": "uSfPxUGJ1xePv2bmz1BC1dL7Z0nhq5ZpwjNUcWPqPhI=",
+        "convertStatus": "CREATED",
+        "projectID": "anpzMQBblC3XyGkF9HGDcWt3yz8rPPZvFdq2HWEWzQg",
+        "engineVersion": "3.0.0.3104",
+        "convertFormat": "obj",
+        "userAgent": "PF_APIv3.2.21-Photofly-WebAPI-FORGE",
+        "creationDate": "2018-02-16T20:13:59",
+        "name": "some_scene_name",
+        "callback": "http://example.com",
+        "maxResolutionForImage": "100000000",
+        "UseTitanTextureEngine": "1",
+        "scenetype": "object",
+        "status": "PROCESSING",
+        "Files": {
+          "file": [
+            {
+              "@attributes": {
+                "pos": "002"
+              },
+              "key": "CexE/tHB6/vDQS/kAfB/I3hp/DyUV/Faoj/QzLY/pPG8/y7kW/4ug=-2406389-100000000",
+              "fileid": "CexEtHB6vDQSkAfBI3hpDyUVFaojQzLYpPG8y7kW4ug=-2406389-100000000",
+              "filename": "DSC_1159.JPG",
+              "type": "image",
+              "subtype": {},
+              "ancestor": {}
+            },
+            {
+              "@attributes": {
+                "pos": "001"
+              },
+              "key": "biyQ/TcFo/B6qv/5Ihi/41py/RXNu/SF1E/CNVU/qB4f/sVw7/FVc=-2359132-100000000",
+              "fileid": "biyQTcFoB6qv5Ihi41pyRXNuSF1ECNVUqB4fsVw7FVc=-2359132-100000000",
+              "filename": "DSC_1158.JPG",
+              "type": "image",
+              "subtype": {},
+              "ancestor": {}
+            }
+          ]
+        }
+      },
+      "type": "object",
+      "properties": {
+        "photosceneid": {
+          "description": "",
+          "example": "anpzMQBblC3XyGkF9HGDcWt3yz8rPPZvFdq2HWEWzQg",
+          "type": "string"
+        },
+        "itemName": {
+          "description": "",
+          "example": "anpzMQBblC3XyGkF9HGDcWt3yz8rPPZvFdq2HWEWzQg",
+          "type": "string"
+        },
+        "clientID": {
+          "description": "",
+          "example": "6NHGyFrutRmejUgL8GS2nd6mayrjYRsn",
+          "type": "string"
+        },
+        "clientStatus": {
+          "description": "",
+          "example": "CREATED",
+          "type": "string"
+        },
+        "type": {
+          "description": "",
+          "example": "all",
+          "type": "string"
+        },
+        "userID": {
+          "description": "",
+          "example": "uSfPxUGJ1xePv2bmz1BC1dL7Z0nhq5ZpwjNUcWPqPhI=",
+          "type": "string"
+        },
+        "convertStatus": {
+          "description": "",
+          "example": "CREATED",
+          "type": "string"
+        },
+        "projectID": {
+          "description": "",
+          "example": "anpzMQBblC3XyGkF9HGDcWt3yz8rPPZvFdq2HWEWzQg",
+          "type": "string"
+        },
+        "engineVersion": {
+          "description": "",
+          "example": "3.0.0.3104",
+          "type": "string"
+        },
+        "convertFormat": {
+          "description": "",
+          "example": "obj",
+          "type": "string"
+        },
+        "userAgent": {
+          "description": "",
+          "example": "PF_APIv3.2.21-Photofly-WebAPI-FORGE",
+          "type": "string"
+        },
+        "creationDate": {
+          "description": "",
+          "example": "2/16/2018 8:13:59 PM",
+          "type": "string"
+        },
+        "name": {
+          "description": "",
+          "example": "some_scene_name",
+          "type": "string"
+        },
+        "callback": {
+          "description": "",
+          "example": "http://example.com",
+          "type": "string"
+        },
+        "maxResolutionForImage": {
+          "description": "",
+          "example": "100000000",
+          "type": "string"
+        },
+        "UseTitanTextureEngine": {
+          "description": "",
+          "example": "1",
+          "type": "string"
+        },
+        "scenetype": {
+          "description": "",
+          "example": "object",
+          "type": "string"
+        },
+        "status": {
+          "description": "",
+          "example": "PROCESSING",
+          "type": "string"
+        },
+        "Files": {
+          "$ref": "#/definitions/Files9"
+        }
+      },
+      "required": [
+        "photosceneid",
+        "itemName",
+        "clientID",
+        "clientStatus",
+        "type",
+        "userID",
+        "convertStatus",
+        "projectID",
+        "engineVersion",
+        "convertFormat",
+        "userAgent",
+        "creationDate",
+        "name",
+        "callback",
+        "maxResolutionForImage",
+        "UseTitanTextureEngine",
+        "scenetype",
+        "status",
+        "Files"
+      ]
+    },
+    "DeletePhotoscene": {
+      "title": "Delete_photoscene",
+      "example": {
+        "Usage": "1.4019570350647",
+        "Resource": "/photoscene/AGOUu3N1mFzXwV01AkFor1x4mZwhBZDKv9wIb1POJwA",
+        "msg": "No error"
+      },
+      "type": "object",
+      "properties": {
+        "Usage": {
+          "description": "",
+          "example": "1.4019570350647",
+          "type": "string"
+        },
+        "Resource": {
+          "description": "",
+          "example": "/photoscene/AGOUu3N1mFzXwV01AkFor1x4mZwhBZDKv9wIb1POJwA",
+          "type": "string"
+        },
+        "msg": {
+          "description": "",
+          "example": "No error",
+          "type": "string"
+        }
+      },
+      "required": [
+        "Usage",
+        "Resource",
+        "msg"
+      ]
+    },
+    "GetResults": {
+      "title": "Get_results",
+      "example": {
+        "Usage": "1.507159948349",
+        "Resource": "/photoscene/anpzMQBblC3XyGkF9HGDcWt3yz8rPPZvFdq2HWEWzQg",
+        "Photoscene": {
+          "photosceneid": "anpzMQBblC3XyGkF9HGDcWt3yz8rPPZvFdq2HWEWzQg",
+          "progressmsg": "DONE",
+          "progress": "100",
+          "scenelink": "http://adsk-rc-photofly-prod.s3.amazonaws.com/3.0.0/OUT/1PyEvoLYJ0X2xz4XFPPf01L1yShrlWZUz4ywvwhB4mo%3D-anpzMQBblC3XyGkF9HGDcWt3yz8rPPZvFdq2HWEWzQg/100000000/some_scene_name.obj.zip?response-content-disposition=attachment%3B%20filename%3D3.0.0%2FOUT%2F1PyEvoLYJ0X2xz4XFPPf01L1yShrlWZUz4ywvwhB4mo%3D-anpzMQBblC3XyGkF9HGDcWt3yz8rPPZvFdq2HWEWzQg%2F100000000%2Fsome_scene_name.obj.zip&AWSAccessKeyId=AKIAISSOG3ZDTRIE6NGA&Expires=1518900642&Signature=AlMCAddVIArTqoi3ghhNV22GQ60%3D",
+          "urn": {},
+          "filesize": "5837986",
+          "resultmsg": {}
+        }
+      },
+      "type": "object",
+      "properties": {
+        "Usage": {
+          "description": "",
+          "example": "1.507159948349",
+          "type": "string"
+        },
+        "Resource": {
+          "description": "",
+          "example": "/photoscene/anpzMQBblC3XyGkF9HGDcWt3yz8rPPZvFdq2HWEWzQg",
+          "type": "string"
+        },
+        "Photoscene": {
+          "$ref": "#/definitions/Photoscene18"
+        }
+      },
+      "required": [
+        "Usage",
+        "Resource",
+        "Photoscene"
+      ]
+    },
+    "CancelSceneProcessing": {
+      "title": "Cancel_scene_processing",
+      "example": {
+        "Usage": "1.4022347927094",
+        "Resource": "/photoscene/U0pEmLNYktcEnEFooMuqZMaIUSqCZLePIf0Nfj4EOoQ/cancel",
+        "msg": "No error"
+      },
+      "type": "object",
+      "properties": {
+        "Usage": {
+          "description": "",
+          "example": "1.4022347927094",
+          "type": "string"
+        },
+        "Resource": {
+          "description": "",
+          "example": "/photoscene/U0pEmLNYktcEnEFooMuqZMaIUSqCZLePIf0Nfj4EOoQ/cancel",
+          "type": "string"
+        },
+        "msg": {
+          "description": "",
+          "example": "No error",
+          "type": "string"
+        }
+      },
+      "required": [
+        "Usage",
+        "Resource",
+        "msg"
+      ]
+    },
+    "Photoscene15": {
+      "title": "Photoscene15",
+      "example": {
+        "photosceneid": "anpzMQBblC3XyGkF9HGDcWt3yz8rPPZvFdq2HWEWzQg",
+        "progressmsg": "Processing",
+        "progress": "80"
+      },
+      "type": "object",
+      "properties": {
+        "photosceneid": {
+          "description": "",
+          "example": "anpzMQBblC3XyGkF9HGDcWt3yz8rPPZvFdq2HWEWzQg",
+          "type": "string"
+        },
+        "progressmsg": {
+          "description": "",
+          "example": "Processing",
+          "type": "string"
+        },
+        "progress": {
+          "description": "",
+          "example": "80",
+          "type": "string"
+        }
+      },
+      "required": [
+        "photosceneid",
+        "progressmsg",
+        "progress"
+      ]
+    },
+    "CheckPhotosceneProgress": {
+      "title": "Check_photoscene_progress",
+      "example": {
+        "Usage": "1.2508330345154",
+        "Resource": "/photoscene/anpzMQBblC3XyGkF9HGDcWt3yz8rPPZvFdq2HWEWzQg/progress",
+        "Photoscene": {
+          "photosceneid": "anpzMQBblC3XyGkF9HGDcWt3yz8rPPZvFdq2HWEWzQg",
+          "progressmsg": "Processing",
+          "progress": "80"
+        }
+      },
+      "type": "object",
+      "properties": {
+        "Usage": {
+          "description": "",
+          "example": "1.2508330345154",
+          "type": "string"
+        },
+        "Resource": {
+          "description": "",
+          "example": "/photoscene/anpzMQBblC3XyGkF9HGDcWt3yz8rPPZvFdq2HWEWzQg/progress",
+          "type": "string"
+        },
+        "Photoscene": {
+          "$ref": "#/definitions/Photoscene15"
+        }
+      },
+      "required": [
+        "Usage",
+        "Resource",
+        "Photoscene"
+      ]
+    },
+    "Error": {
+      "title": "Error",
+      "example": {
+        "code": "9",
+        "msg": "At least three images are required to process the Photoscene"
+      },
+      "type": "object",
+      "properties": {
+        "code": {
+          "description": "",
+          "example": "9",
+          "type": "string"
+        },
+        "msg": {
+          "description": "",
+          "example": "At least three images are required to process the Photoscene",
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "msg"
+      ]
+    },
+    "StartPhotosceneProcessingError": {
+      "title": "Start_photoscene_processing_Error",
+      "example": {
+        "Usage": "2.9841439723969",
+        "Resource": "/photoscene/TLO0N6EdLGLsuwav30Nrzuhd293oVBhPhHuGaKycQfk",
+        "Error": {
+          "code": "9",
+          "msg": "At least three images are required to process the Photoscene"
+        }
+      },
+      "type": "object",
+      "properties": {
+        "Usage": {
+          "description": "",
+          "example": "2.9841439723969",
+          "type": "string"
+        },
+        "Resource": {
+          "description": "",
+          "example": "/photoscene/TLO0N6EdLGLsuwav30Nrzuhd293oVBhPhHuGaKycQfk",
+          "type": "string"
+        },
+        "Error": {
+          "$ref": "#/definitions/Error"
+        }
+      },
+      "required": [
+        "Usage",
+        "Resource",
+        "Error"
+      ]
+    },
+    "Files9": {
+      "title": "Files9",
+      "example": {
+        "file": [
+          {
+            "@attributes": {
+              "pos": "002"
+            },
+            "key": "CexE/tHB6/vDQS/kAfB/I3hp/DyUV/Faoj/QzLY/pPG8/y7kW/4ug=-2406389-100000000",
+            "fileid": "CexEtHB6vDQSkAfBI3hpDyUVFaojQzLYpPG8y7kW4ug=-2406389-100000000",
+            "filename": "DSC_1159.JPG",
+            "type": "image",
+            "subtype": {},
+            "ancestor": {}
+          },
+          {
+            "@attributes": {
+              "pos": "001"
+            },
+            "key": "biyQ/TcFo/B6qv/5Ihi/41py/RXNu/SF1E/CNVU/qB4f/sVw7/FVc=-2359132-100000000",
+            "fileid": "biyQTcFoB6qv5Ihi41pyRXNuSF1ECNVUqB4fsVw7FVc=-2359132-100000000",
+            "filename": "DSC_1158.JPG",
+            "type": "image",
+            "subtype": {},
+            "ancestor": {}
+          }
+        ]
+      },
+      "type": "object",
+      "properties": {
+        "file": {
+          "description": "",
+          "example": [
+            {
+              "@attributes": {
+                "pos": "002"
+              },
+              "key": "CexE/tHB6/vDQS/kAfB/I3hp/DyUV/Faoj/QzLY/pPG8/y7kW/4ug=-2406389-100000000",
+              "fileid": "CexEtHB6vDQSkAfBI3hpDyUVFaojQzLYpPG8y7kW4ug=-2406389-100000000",
+              "filename": "DSC_1159.JPG",
+              "type": "image",
+              "subtype": {},
+              "ancestor": {}
+            },
+            {
+              "@attributes": {
+                "pos": "001"
+              },
+              "key": "biyQ/TcFo/B6qv/5Ihi/41py/RXNu/SF1E/CNVU/qB4f/sVw7/FVc=-2359132-100000000",
+              "fileid": "biyQTcFoB6qv5Ihi41pyRXNuSF1ECNVUqB4fsVw7FVc=-2359132-100000000",
+              "filename": "DSC_1158.JPG",
+              "type": "image",
+              "subtype": {},
+              "ancestor": {}
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/File10"
+          }
+        }
+      },
+      "required": [
+        "file"
+      ]
+    },
+    "File5": {
+      "title": "File5",
+      "example": {
+        "filename": "DSC_1165.JPG",
+        "fileid": "LqJc81gbeqk4a91HUksNkP9NKSNOndf4OQnAGQbR26Q=-2537563-100000000",
+        "filesize": "2537563",
+        "msg": "No error"
+      },
+      "type": "object",
+      "properties": {
+        "filename": {
+          "description": "",
+          "example": "DSC_1165.JPG",
+          "type": "string"
+        },
+        "fileid": {
+          "description": "",
+          "example": "LqJc81gbeqk4a91HUksNkP9NKSNOndf4OQnAGQbR26Q=-2537563-100000000",
+          "type": "string"
+        },
+        "filesize": {
+          "description": "",
+          "example": "2537563",
+          "type": "string"
+        },
+        "msg": {
+          "description": "",
+          "example": "No error",
+          "type": "string"
+        }
+      },
+      "required": [
+        "filename",
+        "fileid",
+        "filesize",
+        "msg"
+      ]
+    },
+    "Files": {
+      "title": "Files",
+      "example": {
+        "file": {
+          "filename": "DSC_1165.JPG",
+          "fileid": "LqJc81gbeqk4a91HUksNkP9NKSNOndf4OQnAGQbR26Q=-2537563-100000000",
+          "filesize": "2537563",
+          "msg": "No error"
+        }
+      },
+      "type": "object",
+      "properties": {
+        "file": {
+          "$ref": "#/definitions/File5"
+        }
+      },
+      "required": [
+        "file"
+      ]
+    },
+    "Attributes": {
+      "title": "Attributes",
+      "example": {
+        "pos": "002"
+      },
+      "type": "object",
+      "properties": {
+        "pos": {
+          "description": "",
+          "example": "002",
+          "type": "string"
+        }
+      },
+      "required": [
+        "pos"
+      ]
+    },
+    "Upload fileVersions": {
+      "title": "Upload file_versions",
+      "example": {
+        "Usage": "2.4938521385193",
+        "Resource": "/file",
+        "photosceneid": "jQy3aGbo40K16dWnuUcEnqcpmQCSXKcFAiEzuDw1RFU",
+        "Files": {
+          "file": {
+            "filename": "DSC_1165.JPG",
+            "fileid": "LqJc81gbeqk4a91HUksNkP9NKSNOndf4OQnAGQbR26Q=-2537563-100000000",
+            "filesize": "2537563",
+            "msg": "No error"
+          }
+        }
+      },
+      "type": "object",
+      "properties": {
+        "Usage": {
+          "description": "",
+          "example": "2.4938521385193",
+          "type": "string"
+        },
+        "Resource": {
+          "description": "",
+          "example": "/file",
+          "type": "string"
+        },
+        "photosceneid": {
+          "description": "",
+          "example": "jQy3aGbo40K16dWnuUcEnqcpmQCSXKcFAiEzuDw1RFU",
+          "type": "string"
+        },
+        "Files": {
+          "$ref": "#/definitions/Files"
+        }
+      },
+      "required": [
+        "Usage",
+        "Resource",
+        "photosceneid",
+        "Files"
+      ]
+    },
+    "Photoscene": {
+      "title": "Photoscene",
+      "type": "object",
+      "properties": {
+        "photosceneid": {
+          "description": "",
+          "example": "asmPRfAy3JaD8pxz58U9WFhLa5Ygqrsp9uo36aFJlTo",
+          "type": "string"
+        },
+        "workerStatus": {
+          "description": "",
+          "example": {},
+          "type": "object"
+        }
+      },
+      "required": [
+        "photosceneid",
+        "workerStatus"
+      ]
+    },
+    "Photoscene18": {
+      "title": "Photoscene18",
+      "example": {
+        "photosceneid": "anpzMQBblC3XyGkF9HGDcWt3yz8rPPZvFdq2HWEWzQg",
+        "progressmsg": "DONE",
+        "progress": "100",
+        "scenelink": "http://adsk-rc-photofly-prod.s3.amazonaws.com/3.0.0/OUT/1PyEvoLYJ0X2xz4XFPPf01L1yShrlWZUz4ywvwhB4mo%3D-anpzMQBblC3XyGkF9HGDcWt3yz8rPPZvFdq2HWEWzQg/100000000/some_scene_name.obj.zip?response-content-disposition=attachment%3B%20filename%3D3.0.0%2FOUT%2F1PyEvoLYJ0X2xz4XFPPf01L1yShrlWZUz4ywvwhB4mo%3D-anpzMQBblC3XyGkF9HGDcWt3yz8rPPZvFdq2HWEWzQg%2F100000000%2Fsome_scene_name.obj.zip&AWSAccessKeyId=AKIAISSOG3ZDTRIE6NGA&Expires=1518900642&Signature=AlMCAddVIArTqoi3ghhNV22GQ60%3D",
+        "urn": {},
+        "filesize": "5837986",
+        "resultmsg": {}
+      },
+      "type": "object",
+      "properties": {
+        "photosceneid": {
+          "description": "",
+          "example": "anpzMQBblC3XyGkF9HGDcWt3yz8rPPZvFdq2HWEWzQg",
+          "type": "string"
+        },
+        "progressmsg": {
+          "description": "",
+          "example": "DONE",
+          "type": "string"
+        },
+        "progress": {
+          "description": "",
+          "example": "100",
+          "type": "string"
+        },
+        "scenelink": {
+          "description": "",
+          "example": "http://adsk-rc-photofly-prod.s3.amazonaws.com/3.0.0/OUT/1PyEvoLYJ0X2xz4XFPPf01L1yShrlWZUz4ywvwhB4mo%3D-anpzMQBblC3XyGkF9HGDcWt3yz8rPPZvFdq2HWEWzQg/100000000/some_scene_name.obj.zip?response-content-disposition=attachment%3B%20filename%3D3.0.0%2FOUT%2F1PyEvoLYJ0X2xz4XFPPf01L1yShrlWZUz4ywvwhB4mo%3D-anpzMQBblC3XyGkF9HGDcWt3yz8rPPZvFdq2HWEWzQg%2F100000000%2Fsome_scene_name.obj.zip&AWSAccessKeyId=AKIAISSOG3ZDTRIE6NGA&Expires=1518900642&Signature=AlMCAddVIArTqoi3ghhNV22GQ60%3D",
+          "type": "string"
+        },
+        "urn": {
+          "description": "",
+          "example": {},
+          "type": "object"
+        },
+        "filesize": {
+          "description": "",
+          "example": "5837986",
+          "type": "string"
+        },
+        "resultmsg": {
+          "description": "",
+          "example": {},
+          "type": "object"
+        }
+      },
+      "required": [
+        "photosceneid",
+        "progressmsg",
+        "progress",
+        "scenelink",
+        "urn",
+        "filesize",
+        "resultmsg"
+      ]
+    },
+    "File10": {
+      "title": "File10",
+      "example": {
+        "@attributes": {
+          "pos": "002"
+        },
+        "key": "CexE/tHB6/vDQS/kAfB/I3hp/DyUV/Faoj/QzLY/pPG8/y7kW/4ug=-2406389-100000000",
+        "fileid": "CexEtHB6vDQSkAfBI3hpDyUVFaojQzLYpPG8y7kW4ug=-2406389-100000000",
+        "filename": "DSC_1159.JPG",
+        "type": "image",
+        "subtype": {},
+        "ancestor": {}
+      },
+      "type": "object",
+      "properties": {
+        "@attributes": {
+          "$ref": "#/definitions/Attributes"
+        },
+        "key": {
+          "description": "",
+          "example": "CexE/tHB6/vDQS/kAfB/I3hp/DyUV/Faoj/QzLY/pPG8/y7kW/4ug=-2406389-100000000",
+          "type": "string"
+        },
+        "fileid": {
+          "description": "",
+          "example": "CexEtHB6vDQSkAfBI3hpDyUVFaojQzLYpPG8y7kW4ug=-2406389-100000000",
+          "type": "string"
+        },
+        "filename": {
+          "description": "",
+          "example": "DSC_1159.JPG",
+          "type": "string"
+        },
+        "type": {
+          "description": "",
+          "example": "image",
+          "type": "string"
+        },
+        "subtype": {
+          "description": "",
+          "example": {},
+          "type": "object"
+        },
+        "ancestor": {
+          "description": "",
+          "example": {},
+          "type": "object"
+        }
+      },
+      "required": [
+        "@attributes",
+        "key",
+        "fileid",
+        "filename",
+        "type",
+        "subtype",
+        "ancestor"
+      ]
+    },
+    "Photoscenes7": {
+      "title": "Photoscenes7",
+      "example": {
+        "Photoscene": {
+          "photosceneid": "anpzMQBblC3XyGkF9HGDcWt3yz8rPPZvFdq2HWEWzQg",
+          "itemName": "anpzMQBblC3XyGkF9HGDcWt3yz8rPPZvFdq2HWEWzQg",
+          "clientID": "6NHGyFrutRmejUgL8GS2nd6mayrjYRsn",
+          "clientStatus": "CREATED",
+          "type": "all",
+          "userID": "uSfPxUGJ1xePv2bmz1BC1dL7Z0nhq5ZpwjNUcWPqPhI=",
+          "convertStatus": "CREATED",
+          "projectID": "anpzMQBblC3XyGkF9HGDcWt3yz8rPPZvFdq2HWEWzQg",
+          "engineVersion": "3.0.0.3104",
+          "convertFormat": "obj",
+          "userAgent": "PF_APIv3.2.21-Photofly-WebAPI-FORGE",
+          "creationDate": "2018-02-16T20:13:59",
+          "name": "some_scene_name",
+          "callback": "http://example.com",
+          "maxResolutionForImage": "100000000",
+          "UseTitanTextureEngine": "1",
+          "scenetype": "object",
+          "status": "PROCESSING",
+          "Files": {
+            "file": [
+              {
+                "@attributes": {
+                  "pos": "002"
+                },
+                "key": "CexE/tHB6/vDQS/kAfB/I3hp/DyUV/Faoj/QzLY/pPG8/y7kW/4ug=-2406389-100000000",
+                "fileid": "CexEtHB6vDQSkAfBI3hpDyUVFaojQzLYpPG8y7kW4ug=-2406389-100000000",
+                "filename": "DSC_1159.JPG",
+                "type": "image",
+                "subtype": {},
+                "ancestor": {}
+              },
+              {
+                "@attributes": {
+                  "pos": "001"
+                },
+                "key": "biyQ/TcFo/B6qv/5Ihi/41py/RXNu/SF1E/CNVU/qB4f/sVw7/FVc=-2359132-100000000",
+                "fileid": "biyQTcFoB6qv5Ihi41pyRXNuSF1ECNVUqB4fsVw7FVc=-2359132-100000000",
+                "filename": "DSC_1158.JPG",
+                "type": "image",
+                "subtype": {},
+                "ancestor": {}
+              }
+            ]
+          }
+        }
+      },
+      "type": "object",
+      "properties": {
+        "Photoscene": {
+          "$ref": "#/definitions/Photoscene8"
+        }
+      },
+      "required": [
+        "Photoscene"
+      ]
+    },
+    "GetPhotosceneDetails[unofficial]": {
+      "title": "Get_photoscene_details[UNoFFICIAL]",
+      "example": {
+        "Usage": "1.2874660491943",
+        "Resource": "/photoscene/anpzMQBblC3XyGkF9HGDcWt3yz8rPPZvFdq2HWEWzQg/properties",
+        "next_token": {},
+        "Photoscenes": {
+          "Photoscene": {
+            "photosceneid": "anpzMQBblC3XyGkF9HGDcWt3yz8rPPZvFdq2HWEWzQg",
+            "itemName": "anpzMQBblC3XyGkF9HGDcWt3yz8rPPZvFdq2HWEWzQg",
+            "clientID": "6NHGyFrutRmejUgL8GS2nd6mayrjYRsn",
+            "clientStatus": "CREATED",
+            "type": "all",
+            "userID": "uSfPxUGJ1xePv2bmz1BC1dL7Z0nhq5ZpwjNUcWPqPhI=",
+            "convertStatus": "CREATED",
+            "projectID": "anpzMQBblC3XyGkF9HGDcWt3yz8rPPZvFdq2HWEWzQg",
+            "engineVersion": "3.0.0.3104",
+            "convertFormat": "obj",
+            "userAgent": "PF_APIv3.2.21-Photofly-WebAPI-FORGE",
+            "creationDate": "2018-02-16T20:13:59",
+            "name": "some_scene_name",
+            "callback": "http://example.com",
+            "maxResolutionForImage": "100000000",
+            "UseTitanTextureEngine": "1",
+            "scenetype": "object",
+            "status": "PROCESSING",
+            "Files": {
+              "file": [
+                {
+                  "@attributes": {
+                    "pos": "002"
+                  },
+                  "key": "CexE/tHB6/vDQS/kAfB/I3hp/DyUV/Faoj/QzLY/pPG8/y7kW/4ug=-2406389-100000000",
+                  "fileid": "CexEtHB6vDQSkAfBI3hpDyUVFaojQzLYpPG8y7kW4ug=-2406389-100000000",
+                  "filename": "DSC_1159.JPG",
+                  "type": "image",
+                  "subtype": {},
+                  "ancestor": {}
+                },
+                {
+                  "@attributes": {
+                    "pos": "001"
+                  },
+                  "key": "biyQ/TcFo/B6qv/5Ihi/41py/RXNu/SF1E/CNVU/qB4f/sVw7/FVc=-2359132-100000000",
+                  "fileid": "biyQTcFoB6qv5Ihi41pyRXNuSF1ECNVUqB4fsVw7FVc=-2359132-100000000",
+                  "filename": "DSC_1158.JPG",
+                  "type": "image",
+                  "subtype": {},
+                  "ancestor": {}
+                }
+              ]
+            }
+          }
+        }
+      },
+      "type": "object",
+      "properties": {
+        "Usage": {
+          "description": "",
+          "example": "1.2874660491943",
+          "type": "string"
+        },
+        "Resource": {
+          "description": "",
+          "example": "/photoscene/anpzMQBblC3XyGkF9HGDcWt3yz8rPPZvFdq2HWEWzQg/properties",
+          "type": "string"
+        },
+        "next_token": {
+          "description": "",
+          "example": {},
+          "type": "object"
+        },
+        "Photoscenes": {
+          "$ref": "#/definitions/Photoscenes7"
+        }
+      },
+      "required": [
+        "Usage",
+        "Resource",
+        "next_token",
+        "Photoscenes"
+      ]
+    },
+    "GetAvailableScenes[unofficial]": {
+      "title": "Get_available_scenes[UNOFFICIAL]",
+      "type": "object",
+      "properties": {
+        "Usage": {
+          "description": "",
+          "example": "1.3357000350952",
+          "type": "string"
+        },
+        "Resource": {
+          "description": "",
+          "example": "/photoscene/foruser",
+          "type": "string"
+        },
+        "next_token": {
+          "description": "",
+          "example": "rO0ABXNyACdjb20uYW1hem9uLnNkcy5RdWVyeVByb2Nlc3Nvci5Nb3JlVG9rZW7racXLnINNqwMA\nC0kAFGluaXRpYWxDb25qdW5jdEluZGV4WgAOaXNQYWdlQm91bmRhcnlKAAxsYXN0RW50aXR5SURa\nAApscnFFbmFibGVkSQAPcXVlcnlDb21wbGV4aXR5SgATcXVlcnlTdHJpbmdDaGVja3N1bUkACnVu\naW9uSW5kZXhaAA11c2VRdWVyeUluZGV4TAANY29uc2lzdGVudExTTnQAEkxqYXZhL2xhbmcvU3Ry\naW5nO0wAEmxhc3RBdHRyaWJ1dGVWYWx1ZXEAfgABTAAJc29ydE9yZGVydAAvTGNvbS9hbWF6b24v\nc2RzL1F1ZXJ5UHJvY2Vzc29yL1F1ZXJ5JFNvcnRPcmRlcjt4cAAAAAAAAAAAAAAPJz0AAAAAAQAA\nAAACPCKyAAAAAAF0ABhbMTM1NTk2NjUwNTI4OSwyMjgzNDY3OV1wfnIALWNvbS5hbWF6b24uc2Rz\nLlF1ZXJ5UHJvY2Vzc29yLlF1ZXJ5JFNvcnRPcmRlcgAAAAAAAAAAEgAAeHIADmphdmEubGFuZy5F\nbnVtAAAAAAAAAAASAAB4cHQACUFTQ0VORElOR3g=",
+          "type": "string"
+        },
+        "Photoscenes": {
+          "$ref": "#/definitions/Photoscenes"
+        }
+      },
+      "required": [
+        "Usage",
+        "Resource",
+        "next_token",
+        "Photoscenes"
+      ]
+    },
+    "Photoscenes": {
+      "title": "Photoscenes",
+      "type": "object",
+      "properties": {
+        "Photoscene": {
+          "description": "",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Photoscene"
+          }
+        }
+      },
+      "required": [
+        "Photoscene"
+      ]
+    }
+  }
+}
